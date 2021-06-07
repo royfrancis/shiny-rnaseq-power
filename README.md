@@ -25,7 +25,7 @@ The app should be available through a web browser at `http://0.0.0.0:8787`.
 Install the following R packages:
 
 ```
-install.packages(c("Bioconductor", "shiny", "shinyBS", "shinythemes"))
+install.packages(c("BiocManager", "shiny", "shinyBS", "shinythemes"))
 BiocManager::install("RNASeqPower")
 ```
 
