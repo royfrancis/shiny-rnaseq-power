@@ -20,7 +20,8 @@ shinyApp(
                                  selectInput("in_pa_est","Variable to estimate",choices=choices_pa,selected=1,selectize=TRUE,multiple=FALSE),
                                  hr(),
                                    uiOutput("ui_pa"),
-                                 div(style="font-size:0.9em;padding-top:10px;",paste0(format(Sys.time(),'%Y'),' • Roy Francis • Version: ',fn_version()))
+				 div(class="help-note",HTML("Computed using <a href='https://bioconductor.org/packages/release/bioc/html/RNASeqPower.html'>RNASeqPower</a>.")),
+                                 div(class="help-note",style="font-size:0.9em;padding-top:5px;",paste0(format(Sys.time(),'%Y'),' • Roy Francis • Version: ',fn_version()))
                                  ),
                           column(9,class="box-right",
                                  htmlOutput("out_pa_label"),
