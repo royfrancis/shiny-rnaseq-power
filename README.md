@@ -31,4 +31,12 @@ BiocManager::install("RNASeqPower")
 
 This repo is not an R package. Clone this repo and execute the R command `shiny::runApp("app.R")` in the root directory.
 
+## Acknowledgements
+
+The underlying calculations are performed by the [RNASeqPower R package](https://bioconductor.org/packages/release/bioc/html/RNASeqPower.html).
+
+Therneau T, Hart S, Kocher J (2021). Calculating samplesSize estimates for RNA Seq studies. R package version 1.32.0. 
+
+***
+
 2021 • Roy Francis
