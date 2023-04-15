@@ -25,36 +25,47 @@ fn_validate <- function(input, message) if (input) print(message)
 
 shinyApp(
   ui = page_fixed(
-    class="app-container",
+    class = "app-container",
     tags$head(tags$style(HTML("
     .app-container {
       margin-top: 1em;
     }
-    .app-container h2 {
+    .app-header {
+      background-color: #FFFFFF;
+    }
+    .app-header h2 {
       color: #A7C947;
     }
-    .help-note {
-      font-size: 0.9em;
+    .app-footer {
+      background-color: #FFFFFF;
+      font-size: 0.8em;
       color: #C0C0C0;
-      padding-top: 10px;
-      padding-bottom: 10px;
     }
     "))),
     title = "RNASeq Power",
     theme = bs_theme(primary = "#A7C947"),
-    h2("RNASeq Power"),
-    div("Power Analysis for RNA-Seq"),
-    div(class = "help-note", style = "padding-top:0;", "Assumes comparison of two groups with equal number of samples. Multiple values can be entered using comma separation. Sequencing depth is input only and cannot be estimated."),
-    layout_sidebar(
-      sidebar(
-        selectInput("in_pa_est", "Variable to estimate", choices = choices_pa, selected = 1),
-        uiOutput("ui_pa")
+    card(
+      full_screen = TRUE,
+      card_header(
+        class="app-header",
+        h2("RNASeq Power"),
+        h5("Power Analysis for RNA-Seq"),
+        div(style = "font-size:90%;", "Assumes comparison of two groups with equal number of samples. Multiple values can be entered using comma separation. Sequencing depth is input only and cannot be estimated.")
       ),
-      div(style="margin-bottom:0.5rem;;", htmlOutput("out_pa_label")),
-      verbatimTextOutput("out_pa")
-    ),
-    div(class = "help-note",
-      HTML(paste0("Built on ", a(href="https://bioconductor.org/packages/release/bioc/html/RNASeqPower.html","RNASeqPower"),". Version ", a(fn_version(), href = "https://github.com/royfrancis/shiny-rnaseq-power")))
+      layout_sidebar(
+        sidebar(
+          selectInput("in_pa_est", "Variable to estimate", choices = choices_pa, selected = 1),
+          uiOutput("ui_pa")
+        ),
+        div(style = "margin-bottom:0.5rem;;", htmlOutput("out_pa_label")),
+        verbatimTextOutput("out_pa")
+      ),
+      card_footer(
+        class="app-footer",
+        div(
+          HTML(paste0("Built on ", a(href = "https://bioconductor.org/packages/release/bioc/html/RNASeqPower.html", "RNASeqPower"), ". Version ", a(fn_version(), href = "https://github.com/royfrancis/shiny-rnaseq-power")))
+        )
+      )
     )
   ),
   server = function(session, input, output) {
@@ -166,7 +177,7 @@ shinyApp(
         },
         error = function(e) {
           shiny:::reactiveStop(conditionMessage(e))
-          #validate(fn_validate(T, "Power analysis error. Check if input values and/or delimiters are correct. All input must be numeric. Coefficient of variation, Alpha and Power must be values between 0 and 1. If error persists, submit an issue on the GitHub repo."))
+          # validate(fn_validate(T, "Power analysis error. Check if input values and/or delimiters are correct. All input must be numeric. Coefficient of variation, Alpha and Power must be values between 0 and 1. If error persists, submit an issue on the GitHub repo."))
         }
       )
     })
