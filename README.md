@@ -10,23 +10,24 @@ This is an R shiny app to run power analysis for RNA-Seq experiments.
 
 ### Run online
 
-Click [here](https://roymf.shinyapps.io/rnaseq-power/) to access an online instance of this app. This link may not always be active.
+Click [here](https://rnaseq-power.serve.scilifelab.se/) to access an online instance of this app. This link may not always be active.
 
 ### Run using docker
 
 ```
-docker run --rm -p 8787:8787 royfrancis/shiny-rnaseq-power:v1.0.0
+docker run --rm -p 3838:3838 royfrancis/shiny-rnaseq-power:v1.1.0
 ```
 
-The app should be available through a web browser at `http://0.0.0.0:8787`.
+The app should be available through a web browser at `http://0.0.0.0:3838`.
 
 ### Run in R
 
 Install the following R packages:
 
 ```
-install.packages(c("BiocManager", "shiny", "shinyBS", "shinythemes"))
-BiocManager::install("RNASeqPower")
+install.packages(c("BiocManager","shinyBS","pak"),repo="https://cloud.r-project.org/")
+pak::pkg_install("rstudio/bslib")
+BiocManager::install("RNASeqPower");
 ```
 
 This repo is not an R package. Clone this repo and execute the R command `shiny::runApp("app.R")` in the root directory.
@@ -39,4 +40,4 @@ Therneau T, Hart S, Kocher J (2021). Calculating samplesSize estimates for RNA S
 
 ***
 
-2021 • Roy Francis
+2023 • Roy Francis
