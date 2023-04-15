@@ -35,5 +35,6 @@ jobs:
         with:
           context: .
           push: true
+          repository: royfrancis/shiny-rnaseq-power
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
