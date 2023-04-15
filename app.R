@@ -25,7 +25,14 @@ fn_validate <- function(input, message) if (input) print(message)
 
 shinyApp(
   ui = page_fixed(
+    class="app-container",
     tags$head(tags$style(HTML("
+    .app-container {
+      margin-top: 1em;
+    }
+    .app-container h2 {
+      color: #A7C947;
+    }
     .help-note {
       font-size: 0.9em;
       color: #C0C0C0;
@@ -34,10 +41,10 @@ shinyApp(
     }
     "))),
     title = "RNASeq Power",
-    theme = bs_theme(bootswatch = "zephyr"),
+    theme = bs_theme(primary = "#A7C947"),
     h2("RNASeq Power"),
-    div("Power Analysis for RNA-Seq. Assumes comparison of two groups with equal number of samples."),
-    div(class = "help-note", style = "padding-top:0;", "Multiple values can be entered using comma separation. Sequencing depth is input only and cannot be estimated."),
+    div("Power Analysis for RNA-Seq"),
+    div(class = "help-note", style = "padding-top:0;", "Assumes comparison of two groups with equal number of samples. Multiple values can be entered using comma separation. Sequencing depth is input only and cannot be estimated."),
     layout_sidebar(
       sidebar(
         selectInput("in_pa_est", "Variable to estimate", choices = choices_pa, selected = 1),
