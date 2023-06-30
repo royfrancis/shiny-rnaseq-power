@@ -15,7 +15,7 @@ Click [here](https://rnaseq-power.serve.scilifelab.se/) to access an online inst
 ### Run using docker
 
 ```
-docker run --rm -p 3838:3838 royfrancis/shiny-rnaseq-power:v1.1.0
+docker run --rm -p 3838:3838 royfrancis/shiny-rnaseq-power
 ```
 
 The app should be available through a web browser at `http://0.0.0.0:3838`.
